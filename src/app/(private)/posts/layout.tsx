@@ -7,9 +7,9 @@ export const metadata: Metadata = {
 type Props = { children: React.ReactNode }
 const PostsLayout = ({children}: Props) => {
     return (
-        <>
+        <div>
             {children}
-        </>
+        </div>
     );
 };
 

@@ -9,7 +9,16 @@ const UsersComponent: FC<Props> = ({users}) => {
         <div>
             {
                 users.map(({id, name}) => (<div key={id}>
-                    <Link href={'/users/' + id}>{name}</Link>
+                    <Link
+                        href={
+                            {
+                                pathname: '/users/' + id,
+                                query: {xxx: JSON.stringify({id, name})}
+                            }
+                        }
+
+
+                    >{name}</Link>
 
                 </div>))
             }

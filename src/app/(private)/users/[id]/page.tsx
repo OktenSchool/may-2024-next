@@ -1,15 +1,33 @@
-import React from 'react';
+import React, {FC} from 'react';
 
-type Params = { id: string }
+// type MyParams = {
+//     id: Promise< string >,
+//     searchParams: ReadonlyURLSearchParams,
+// }
 
-const UserPage = async ({params}: { params: Params }) => {
+type Params = Promise<{ id: string }>
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>
 
-    const user = await fetch('https://jsonplaceholder.typicode.com/users/' + params.id).then(res => res.json());
+type MyProps = {
+    params: Params;
+    searchParams: SearchParams
+}
+const UserPage: FC<MyProps> = async ({params, searchParams}) => {
+    const {id} = await params;
+    console.log(id);
+    const {xxx} = await searchParams;
+
+
+    const user = await fetch('https://jsonplaceholder.typicode.com/users/' + id).then(res => res.json());
+
+    // const readonlyURLSearchParams = await searchParams;
 
 
     return (
         <div>
             {JSON.stringify(user)}
+            <hr/>
+            {xxx}
         </div>
     );
 };

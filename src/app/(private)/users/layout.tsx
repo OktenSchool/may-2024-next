@@ -7,10 +7,10 @@ export const metadata: Metadata = {
 type Props = { children: React.ReactNode }
 const UsersLayout = ({children}: Props) => {
     return (
-        <>
+        <div>
             <div>users layout</div>
             {children}
-        </>
+        </div>
     );
 };
 
